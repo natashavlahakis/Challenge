@@ -9,6 +9,9 @@
     <meta name="author" content="Natasha Vlahakis">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    
     <!-- Google Webfonts - Roboto Slab & Nunito -->
     <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,700|Merriweather:400,700' rel='stylesheet' type='text/css'>
     

@@ -2,7 +2,7 @@
 //get theme options
 $options = get_option( 'theme_settings' ); ?>
 
-<!--////////// SUBFOOTER SECTION //////////-->
+    <!--////////// SUBFOOTER SECTION //////////-->
     <section id="sub-footer">
         <div class="container">
             <div class="row">
@@ -24,8 +24,10 @@ $options = get_option( 'theme_settings' ); ?>
     </section>
     
     <!--////////// JAVASCRIPT FILES INCLUDES //////////-->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    
     <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.fitvids.min.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/waypoints.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.isotope.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.fitvids.min.js"></script>
