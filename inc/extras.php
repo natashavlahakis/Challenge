@@ -10,16 +10,16 @@
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
  */
-function challenge_page_menu_args( $args ) {
+function Challenge_page_menu_args( $args ) {
 	$args['show_home'] = true;
 	return $args;
 }
-add_filter( 'wp_page_menu_args', 'challenge_page_menu_args' );
+add_filter( 'wp_page_menu_args', 'Challenge_page_menu_args' );
 
 /**
  * Adds custom classes to the array of body classes.
  */
-function challenge_body_classes( $classes ) {
+function Challenge_body_classes( $classes ) {
 	// Adds a class of group-blog to blogs with more than 1 published author
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
@@ -27,12 +27,12 @@ function challenge_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'challenge_body_classes' );
+add_filter( 'body_class', 'Challenge_body_classes' );
 
 /**
  * Filter in a link to a content ID attribute for the next/previous image links on image attachment pages
  */
-function challenge_enhanced_image_navigation( $url, $id ) {
+function Challenge_enhanced_image_navigation( $url, $id ) {
 	if ( ! is_attachment() && ! wp_attachment_is_image( $id ) )
 		return $url;
 
@@ -42,12 +42,12 @@ function challenge_enhanced_image_navigation( $url, $id ) {
 
 	return $url;
 }
-add_filter( 'attachment_link', 'challenge_enhanced_image_navigation', 10, 2 );
+add_filter( 'attachment_link', 'Challenge_enhanced_image_navigation', 10, 2 );
 
 /**
  * Filters wp_title to print a neat <title> tag based on what is being viewed.
  */
-function challenge_wp_title( $title, $sep ) {
+function Challenge_wp_title( $title, $sep ) {
 	global $page, $paged;
 
 	if ( is_feed() )
@@ -63,8 +63,8 @@ function challenge_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 )
-		$title .= " $sep " . sprintf( __( 'Page %s', 'challenge' ), max( $paged, $page ) );
+		$title .= " $sep " . sprintf( __( 'Page %s', 'Challenge' ), max( $paged, $page ) );
 
 	return $title;
 }
-add_filter( 'wp_title', 'challenge_wp_title', 10, 2 );
+add_filter( 'wp_title', 'Challenge_wp_title', 10, 2 );

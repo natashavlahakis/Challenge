@@ -5,11 +5,12 @@
  *
  * You can add an optional custom header image to header.php like so ...
 
-	<?php if ( get_header_image() ) : ?>
-	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-		<img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="">
-	</a>
-	<?php endif; // End header image check. ?>
+	<?php $header_image = get_header_image();
+	if ( ! empty( $header_image ) ) { ?>
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+			<img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="">
+		</a>
+	<?php } // if ( ! empty( $header_image ) ) ?>
 
  *
  * @package Challenge
@@ -18,33 +19,35 @@
 /**
  * Setup the WordPress core custom header feature.
  *
- * @uses challenge_header_style()
- * @uses challenge_admin_header_style()
- * @uses challenge_admin_header_image()
+ * @uses Challenge_header_style()
+ * @uses Challenge_admin_header_style()
+ * @uses Challenge_admin_header_image()
  *
  * @package Challenge
  */
-function challenge_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'challenge_custom_header_args', array(
-		'default-image'          => '',
-		'default-text-color'     => '000',
-		'width'                  => 1000,
-		'height'                 => 250,
-		'flex-height'            => true,
-		'wp-head-callback'       => 'challenge_header_style',
-		'admin-head-callback'    => 'challenge_admin_header_style',
-		'admin-preview-callback' => 'challenge_admin_header_image',
-	) ) );
+function Challenge_custom_header_setup() {
+	if ( function_exists( 'add_theme_support' ) ) {
+		add_theme_support( 'custom-header', apply_filters( 'Challenge_custom_header_args', array(
+			'default-image'          => '',
+			'default-text-color'     => '000',
+			'width'                  => 1170,
+			'height'                 => 250,
+			'flex-height'            => true,
+			'wp-head-callback'       => 'Challenge_header_style',
+			'admin-head-callback'    => 'Challenge_admin_header_style',
+			'admin-preview-callback' => 'Challenge_admin_header_image',
+		) ) );
+	}
 }
-add_action( 'after_setup_theme', 'challenge_custom_header_setup' );
+add_action( 'after_setup_theme', 'Challenge_custom_header_setup' );
 
-if ( ! function_exists( 'challenge_header_style' ) ) :
+if ( ! function_exists( 'Challenge_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog
  *
- * @see challenge_custom_header_setup().
+ * @see Challenge_custom_header_setup().
  */
-function challenge_header_style() {
+function Challenge_header_style() {
 	$header_text_color = get_header_textcolor();
 
 	// If no custom options for text are set, let's bail
@@ -76,15 +79,15 @@ function challenge_header_style() {
 	</style>
 	<?php
 }
-endif; // challenge_header_style
+endif; // Challenge_header_style
 
-if ( ! function_exists( 'challenge_admin_header_style' ) ) :
+if ( ! function_exists( 'Challenge_admin_header_style' ) ) :
 /**
  * Styles the header image displayed on the Appearance > Header admin panel.
  *
- * @see challenge_custom_header_setup().
+ * @see Challenge_custom_header_setup().
  */
-function challenge_admin_header_style() {
+function Challenge_admin_header_style() {
 ?>
 	<style type="text/css">
 		.appearance_page_custom-header #headimg {
@@ -104,24 +107,25 @@ function challenge_admin_header_style() {
 	</style>
 <?php
 }
-endif; // challenge_admin_header_style
+endif; // Challenge_admin_header_style
 
-if ( ! function_exists( 'challenge_admin_header_image' ) ) :
+if ( ! function_exists( 'Challenge_admin_header_image' ) ) :
 /**
  * Custom header image markup displayed on the Appearance > Header admin panel.
  *
- * @see challenge_custom_header_setup().
+ * @see Challenge_custom_header_setup().
  */
-function challenge_admin_header_image() {
-	$style = sprintf( ' style="color:#%s;"', get_header_textcolor() );
+function Challenge_admin_header_image() {
+	$style        = sprintf( ' style="color:#%s;"', get_header_textcolor() );
+	$header_image = get_header_image();
 ?>
 	<div id="headimg">
 		<h1 class="displaying-header-text"><a id="name"<?php echo $style; ?> onclick="return false;" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
 		<div class="displaying-header-text" id="desc"<?php echo $style; ?>><?php bloginfo( 'description' ); ?></div>
-		<?php if ( get_header_image() ) : ?>
-		<img src="<?php header_image(); ?>" alt="">
+		<?php if ( ! empty( $header_image ) ) : ?>
+			<img src="<?php echo esc_url( $header_image ); ?>" alt="">
 		<?php endif; ?>
 	</div>
 <?php
 }
-endif; // challenge_admin_header_image
+endif; // Challenge_admin_header_image
