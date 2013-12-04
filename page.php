@@ -51,11 +51,11 @@ get_header(); ?>
         
                 </main><!-- #main -->
             </div><!-- #primary -->
-        </div>
+        </div><!-- .col -->
 
         <div class="col-xs-6 col-sm-6 col-md-4">
             <?php get_sidebar(); ?>
-        </div>
+        </div><!-- .col -->
     </div><!-- .row -->
 
 </div><!-- #wrap -->

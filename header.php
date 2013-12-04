@@ -18,20 +18,14 @@
     <!--[if IE]>
 <script src="js/html5shiv.js"></script>
 <![endif]-->
-    
-    <!-- A few scripts that need to be in the head section -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/respond.min.js"></script>
-    
-    <!-- FlexSlider -->
-    <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.flexslider.js"></script>
-    <script type="text/javascript">
-        $(window).load(function() {
-            $('.flexslider').flexslider();
-        })
-    </script>
-    
+    <?php  
+if ( substr_count( $_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip' ) ) {  
+    ob_start( "ob_gzhandler" );  
+}  
+else {  
+    ob_start();  
+}  
+    ?>    
     <?php wp_head(); ?>
 </head>
 <body id="section-home" data-spy="scroll" data-target="#main-nav" data-offset="72">
