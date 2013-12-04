@@ -26,13 +26,11 @@ $options = get_option( 'theme_settings' ); ?>
     <!--////////// JAVASCRIPT FILES INCLUDES //////////-->
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>ter
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/respond.min.js"></script>    
     <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.fitvids.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/waypoints.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.isotope.min.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.fitvids.min.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/assets/twitter/jquery.tweet.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/baseline.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
 

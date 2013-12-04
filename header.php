@@ -25,7 +25,8 @@ if ( substr_count( $_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip' ) ) {
 else {  
     ob_start();  
 }  
-    ?>    
+    ?>
+    
     <?php wp_head(); ?>
 </head>
 <body id="section-home" data-spy="scroll" data-target="#main-nav" data-offset="72">
